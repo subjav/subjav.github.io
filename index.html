@@ -19,13 +19,21 @@
     body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--bg-light);
+        background: linear-gradient(135deg, #6e7dff, #00c6ff);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
         color: var(--text-light);
         transition: background-color 0.3s, color 0.3s;
     }
 
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
     body.dark-mode {
-        background-color: var(--bg-dark);
+        background: #121212;
         color: var(--text-dark);
     }
 
@@ -72,6 +80,14 @@
         justify-content: center;
         align-items: center;
         z-index: 998;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+    }
+
+    .overlay.show {
+        opacity: 1;
+        pointer-events: all;
     }
 
     .popup {
@@ -84,7 +100,14 @@
         text-align: center;
         box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         position: relative;
-        transition: background-color 0.3s, color 0.3s;
+        transform: translateY(-50px);
+        transition: transform 0.5s, background-color 0.3s, color 0.3s;
+        opacity: 0;
+    }
+
+    .overlay.show .popup {
+        transform: translateY(0);
+        opacity: 1;
     }
 
     body.dark-mode .popup {
@@ -103,7 +126,7 @@
         line-height: 1.6;
     }
 
-    .cta-button {
+    .cta-button, .download-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -116,10 +139,20 @@
         text-decoration: none;
         font-weight: bold;
         transition: 0.3s;
+        margin: 5px 0;
     }
 
-    .cta-button:hover {
+    .cta-button:hover, .download-btn:hover {
         background-color: #45a049;
+    }
+
+    .download-btn {
+        background-color: var(--secondary);
+        color: #333;
+    }
+
+    .download-btn:hover {
+        background-color: #d4ac0d;
     }
 
     .countdown {
@@ -162,7 +195,7 @@
         .popup {
             padding: 20px 15px;
         }
-        .cta-button {
+        .cta-button, .download-btn {
             width: 100%;
         }
     }
@@ -179,13 +212,16 @@
 </div>
 
 <!-- POPUP -->
-<div class="overlay" id="overlay">
+<div class="overlay show" id="overlay">
     <div class="popup">
         <h1>Thông báo thay đổi tên miền</h1>
         <p>Cập nhật lần cuối: <span id="updateDate"></span></p>
         <p>Tên miền mới của chúng tôi là <strong>SUBJAV.CO</strong>. Hãy truy cập ngay:</p>
         <a href="https://subjav.co/" class="cta-button">
             <span class="spinner"></span> Truy cập ngay
+        </a>
+        <a href="https://1.1.1.1" target="_blank" class="download-btn">
+            Tải ứng dụng 1.1.1.1
         </a>
         <div class="countdown" id="countdown"></div>
         <footer>
