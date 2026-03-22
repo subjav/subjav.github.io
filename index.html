@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Thông báo thay đổi tên miền</title>
+
     <style>
-        /* Toàn bộ bố cục */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -16,62 +15,59 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #6e7dff, #00c6ff);
-            color: white;
-            overflow: hidden;
         }
 
-        /* Container chính */
         .container {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             max-width: 600px;
             width: 100%;
         }
 
-        /* Tiêu đề */
         h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 10px;
             color: #333;
         }
 
-        /* Đoạn văn thông báo */
+        .update-date {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
         p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 17px;
+            margin-bottom: 20px;
             color: #555;
             line-height: 1.6;
         }
 
-        /* Nút hành động */
         .cta-button {
             background-color: #4CAF50;
             color: white;
             padding: 12px 30px;
             font-size: 18px;
-            border: none;
             border-radius: 5px;
-            cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.3s;
+            display: inline-block;
+            transition: 0.3s;
         }
 
         .cta-button:hover {
             background-color: #45a049;
         }
 
-        /* Countdown timer */
         .countdown {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: bold;
             color: #ff4d4d;
             margin-top: 20px;
         }
 
-        /* Khuyến nghị về 1.1.1.1 */
         .recommendation {
             background-color: #f1c40f;
             padding: 20px;
@@ -81,7 +77,11 @@
             font-weight: bold;
         }
 
-        .recommendation a {
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
             color: #333;
             text-decoration: none;
             font-weight: bold;
@@ -90,13 +90,12 @@
             border-radius: 5px;
         }
 
-        .recommendation a:hover {
+        .download-btn:hover {
             background-color: #45a049;
         }
 
-        /* Footer */
         footer {
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 14px;
             color: #888;
         }
@@ -107,52 +106,76 @@
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Thông báo thay đổi tên miền</h1>
-        <p>Chúng tôi xin thông báo rằng tên miền của chúng tôi đã thay đổi thành <strong>SUBJAV.CO</strong>.</p>
-        <p>Điều này giúp chúng tôi cải thiện hiệu suất và mang đến một trải nghiệm tốt hơn cho người dùng. Hãy truy cập website mới của chúng tôi tại địa chỉ: <strong><a href="https://subjav.co" target="_blank" class="highlight">https://subjav.co</a></strong>.</p>
-        <a href="https://subjav.co" class="cta-button">Truy cập ngay</a>
-        <div class="countdown" id="countdown"></div>
+<div class="container">
+    <h1>Thông báo thay đổi tên miền</h1>
+    <p class="update-date" id="updateDate"></p>
 
-        <!-- Khuyến nghị về 1.1.1.1 -->
-        <div class="recommendation">
-            <p>Nếu bạn không thể truy cập trang web (lúc web bị chặn), vui lòng bật ứng dụng <strong>1.1.1.1</strong> để thay đổi DNS và cải thiện kết nối. Cài đặt ứng dụng từ liên kết dưới đây:</p>
-            <div>
-                <a href="https://1.1.1.1" target="_blank">Tải ứng dụng 1.1.1.1</a>
-            </div>
-        </div>
+    <p>
+        Chúng tôi xin thông báo rằng tên miền của chúng tôi đã thay đổi từ 
+        <strong>SUBJAV</strong> thành <strong>SUBJAV.CO</strong>.
+    </p>
 
-        <footer>
-            <p>© 2026 SUBJAV. Tất cả các quyền được bảo lưu. <br> <a href="https://subjav.co/privacy" target="_blank">Chính sách bảo mật</a></p>
-        </footer>
+    <p>
+        Điều này giúp chúng tôi cải thiện hiệu suất và mang đến trải nghiệm tốt hơn.
+        Hãy truy cập website mới tại:
+        <br>
+        <strong><a href="https://subjav.co" target="_blank">https://subjav.co</a></strong>
+    </p>
+
+    <a href="https://subjav.co" class="cta-button">Truy cập ngay</a>
+
+    <div class="countdown" id="countdown"></div>
+
+    <div class="recommendation">
+        <p>Nếu bạn không thể truy cập, hãy bật ứng dụng 1.1.1.1 để đổi DNS:</p>
+
+        <a href="https://1.1.1.1" target="_blank" class="download-btn">
+            <!-- Icon download SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M.5 9.9v3.6c0 .6.4 1 1 1h13c.6 0 1-.4 1-1V9.9h-1.5v3.1h-12V9.9H.5z"/>
+                <path d="M7.646 11.354a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V1.5a.5.5 0 0 0-1 0v8.293L5.354 7.646a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+            Tải ứng dụng 1.1.1.1
+        </a>
     </div>
 
-    <script>
-        // Set thời gian đếm ngược (ví dụ: 10 giây)
-        var countdownDate = new Date().getTime() + 10000; // Thời gian đếm ngược là 10 giây từ bây giờ
+    <footer>
+        <p>
+            © 2026 SUBJAV. Tất cả các quyền được bảo lưu.
+            <br>
+            <a href="https://subjav.co/privacy" target="_blank">Chính sách bảo mật</a>
+        </p>
+    </footer>
+</div>
 
-        var countdownElement = document.getElementById("countdown");
+<script>
+    // ===== HIỂN THỊ NGÀY CẬP NHẬT TỰ ĐỘNG =====
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('vi-VN');
+    document.getElementById("updateDate").innerText = "Cập nhật lần cuối: " + formattedDate;
 
-        // Cập nhật countdown mỗi giây
-        var countdownInterval = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countdownDate - now;
+    // ===== COUNTDOWN =====
+    var countdownDate = new Date().getTime() + 10000;
 
-            // Tính toán số giây còn lại
-            var seconds = Math.floor(distance / 1000);
+    var countdownElement = document.getElementById("countdown");
 
-            // Hiển thị số giây còn lại trên trang
-            countdownElement.innerHTML = "Chuyển hướng sau: " + seconds + " giây";
+    var countdownInterval = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countdownDate - now;
 
-            // Nếu đếm ngược kết thúc, chuyển hướng sang domain mới
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                window.location.href = "https://subjav.co"; // Chuyển hướng đến domain mới
-            }
-        }, 1000); // Cập nhật mỗi giây
-    </script>
+        var seconds = Math.floor(distance / 1000);
+
+        countdownElement.innerHTML = "Chuyển hướng sau: " + seconds + " giây";
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "https://subjav.co";
+        }
+    }, 1000);
+</script>
 
 </body>
 </html>
