@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thông báo thay đổi tên miền</title>
 <style>
-    /* ===== GLOBAL ===== */
     :root {
         --bg-light: #f9f9f9;
         --bg-dark: #1e1e1e;
@@ -37,7 +36,6 @@
         color: var(--text-dark);
     }
 
-    /* ===== HEADER ===== */
     .header {
         position: fixed;
         top: 0;
@@ -52,11 +50,7 @@
         z-index: 999;
     }
 
-    .header img {
-        width: 32px;
-        height: 32px;
-    }
-
+    .header img { width: 32px; height: 32px; }
     .dark-toggle {
         background: var(--primary);
         color: white;
@@ -66,12 +60,8 @@
         cursor: pointer;
         transition: 0.3s;
     }
+    .dark-toggle:hover { background: #45a049; }
 
-    .dark-toggle:hover {
-        background: #45a049;
-    }
-
-    /* ===== POPUP ===== */
     .overlay {
         position: fixed;
         inset: 0;
@@ -85,10 +75,7 @@
         transition: opacity 0.5s;
     }
 
-    .overlay.show {
-        opacity: 1;
-        pointer-events: all;
-    }
+    .overlay.show { opacity: 1; pointer-events: all; }
 
     .popup {
         background-color: var(--bg-light);
@@ -105,63 +92,35 @@
         opacity: 0;
     }
 
-    .overlay.show .popup {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    .overlay.show .popup { transform: translateY(0); opacity: 1; }
 
-    body.dark-mode .popup {
-        background-color: #2b2b2b;
-        color: var(--text-dark);
-    }
+    body.dark-mode .popup { background-color: #2b2b2b; color: var(--text-dark); }
 
-    .popup h1 {
-        font-size: clamp(20px, 5vw, 28px);
-        margin-bottom: 10px;
-    }
-
-    .popup p {
-        font-size: clamp(14px, 4vw, 16px);
-        margin-bottom: 20px;
-        line-height: 1.6;
-    }
+    .popup h1 { font-size: clamp(20px, 5vw, 28px); margin-bottom: 10px; }
+    .popup p { font-size: clamp(14px, 4vw, 16px); margin-bottom: 20px; line-height: 1.6; }
 
     .cta-button, .download-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 6px;
-        background-color: var(--primary);
-        color: white;
         padding: 12px 24px;
         border-radius: 8px;
         font-size: 16px;
         text-decoration: none;
         font-weight: bold;
         transition: 0.3s;
-        margin: 5px 0;
+        margin: 8px 0;
         white-space: nowrap;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    .cta-button:hover {
-        background-color: #45a049;
-    }
+    .cta-button { background-color: var(--primary); color: white; }
+    .cta-button:hover { background-color: #45a049; }
 
-    .download-btn {
-        background-color: var(--secondary);
-        color: #333;
-    }
-
-    .download-btn:hover {
-        background-color: #d4ac0d;
-    }
-
-    .countdown {
-        margin-top: 20px;
-        font-size: 22px;
-        font-weight: bold;
-        color: var(--accent);
-    }
+    .download-btn { background-color: var(--secondary); color: #333; }
+    .download-btn:hover { background-color: #d4ac0d; }
 
     .spinner {
         border: 4px solid #f3f3f3;
@@ -175,45 +134,22 @@
         vertical-align: middle;
     }
 
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    footer {
-        margin-top: 20px;
-        font-size: 12px;
-        color: #888;
-    }
+    .countdown { margin-top: 20px; font-size: 22px; font-weight: bold; color: var(--accent); }
 
-    footer a {
-        color: var(--primary);
-        text-decoration: none;
-    }
+    footer { margin-top: 20px; font-size: 12px; color: #888; }
+    footer a { color: var(--primary); text-decoration: none; }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 480px) {
-        .popup {
-            padding: 20px 15px;
-        }
-
-        /* Button full width, không vỡ layout */
-        .cta-button, .download-btn {
-            width: 100%;
-            justify-content: center;
-            white-space: normal;
-            margin: 8px 0;
-        }
-
-        .cta-button span.spinner {
-            margin-right: 6px;
-        }
+        .popup { padding: 20px 15px; }
+        .cta-button, .download-btn { width: 100%; justify-content: center; white-space: normal; }
+        .cta-button span.spinner { margin-right: 6px; }
     }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
     <div style="display:flex;align-items:center;gap:8px;">
         <img src="https://subjav.github.io/icon.png" alt="logo"> SUBJAV
@@ -221,21 +157,24 @@
     <button class="dark-toggle" id="darkToggle">Dark Mode</button>
 </div>
 
-<!-- POPUP -->
 <div class="overlay show" id="overlay">
     <div class="popup">
         <h1>Thông báo thay đổi tên miền</h1>
         <p>Cập nhật lần cuối: <span id="updateDate"></span></p>
         <p>Tên miền mới của chúng tôi là <strong>SUBJAV.CO</strong>. Hãy truy cập ngay:</p>
 
+        <!-- Nút truy cập -->
         <a href="https://subjav.co/" class="cta-button">
             <span class="spinner"></span> Truy cập ngay
         </a>
+
+        <!-- Nút tải ứng dụng nằm dưới -->
         <a href="https://1.1.1.1" target="_blank" class="download-btn">
             Tải ứng dụng 1.1.1.1
         </a>
 
         <div class="countdown" id="countdown"></div>
+
         <footer>
             © 2026 SUBJAV. <a href="https://subjav.co/privacy" target="_blank">Chính sách bảo mật</a>
         </footer>
@@ -245,8 +184,7 @@
 <script>
     // Cập nhật ngày
     const today = new Date();
-    const formattedDate = today.toLocaleDateString('vi-VN');
-    document.getElementById("updateDate").innerText = formattedDate;
+    document.getElementById("updateDate").innerText = today.toLocaleDateString('vi-VN');
 
     // Countdown & redirect
     let countdownTime = 10;
