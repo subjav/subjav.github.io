@@ -6,13 +6,10 @@
     <title>Thông báo thay đổi tên miền</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            padding: 0;
             background: linear-gradient(135deg, #6e7dff, #00c6ff);
         }
 
@@ -21,69 +18,63 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.3);
             backdrop-filter: blur(10px);
-            padding: 12px 16px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             gap: 10px;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             z-index: 999;
         }
 
         .header img {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
         }
 
-        /* CONTAINER */
+        /* Container chính */
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px 20px;
-            border-radius: 12px;
+            padding: 40px;
+            border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             max-width: 600px;
-            width: 90%;
-            margin: 90px auto 20px;
+            width: 100%;
+            margin: 100px auto 0; /* đẩy xuống tránh header */
         }
 
         h1 {
-            font-size: 26px;
+            font-size: 32px;
             margin-bottom: 10px;
             color: #333;
         }
 
         .update-date {
-            font-size: 13px;
+            font-size: 14px;
             color: #888;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 16px;
-            margin-bottom: 15px;
+            font-size: 17px;
+            margin-bottom: 20px;
             color: #555;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        a {
-            word-break: break-all;
-        }
-
-        /* BUTTON */
         .cta-button {
             background-color: #4CAF50;
             color: white;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 6px;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 5px;
             text-decoration: none;
-            display: block;
-            width: 100%;
-            margin-top: 10px;
+            display: inline-block;
+            transition: 0.3s;
         }
 
         .cta-button:hover {
@@ -91,66 +82,54 @@
         }
 
         .countdown {
-            font-size: 22px;
+            font-size: 28px;
             font-weight: bold;
             color: #ff4d4d;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .recommendation {
             background-color: #f1c40f;
-            padding: 15px;
-            margin-top: 20px;
+            padding: 20px;
+            margin-top: 30px;
             border-radius: 8px;
             color: #333;
             font-weight: bold;
         }
 
         .download-btn {
-            display: flex;
-            justify-content: center;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-top: 10px;
             color: #333;
             text-decoration: none;
+            font-weight: bold;
             background-color: #4CAF50;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .download-btn:hover {
+            background-color: #45a049;
         }
 
         footer {
-            margin-top: 20px;
-            font-size: 13px;
+            margin-top: 30px;
+            font-size: 14px;
             color: #888;
         }
 
-        /* ===== RESPONSIVE BREAKPOINT ===== */
-        @media (min-width: 768px) {
-            .container {
-                padding: 40px;
-            }
-
-            h1 {
-                font-size: 32px;
-            }
-
-            .cta-button {
-                display: inline-block;
-                width: auto;
-                padding: 12px 30px;
-            }
-
-            .download-btn {
-                display: inline-flex;
-                padding: 10px 20px;
-            }
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
     <img src="https://subjav.github.io/icon.png" alt="logo">
     SUBJAV
@@ -161,13 +140,14 @@
     <p class="update-date" id="updateDate"></p>
 
     <p>
-        Tên miền đã được cập nhật thành <strong>SUBJAV.CO</strong>.
+        Chúng tôi xin thông báo rằng tên miền của chúng tôi đã thay đổi thành <strong>SUBJAV.CO</strong>.
     </p>
 
     <p>
-        Truy cập ngay:
+        Điều này giúp chúng tôi cải thiện hiệu suất và mang đến trải nghiệm tốt hơn.
+        Hãy truy cập website mới tại:
         <br>
-        <strong><a href="https://subjav.co/">https://subjav.co/</a></strong>
+        <strong><a href="https://subjav.co/" target="_blank">https://subjav.co/</a></strong>
     </p>
 
     <a href="https://subjav.co/" class="cta-button">Truy cập ngay</a>
@@ -175,36 +155,45 @@
     <div class="countdown" id="countdown"></div>
 
     <div class="recommendation">
-       <p>Nếu bạn không thể truy cập (lúc web bị chặn), hãy bật ứng dụng 1.1.1.1 để đổi DNS:</p>
+        <p>
+            ⚠️ Không truy cập được? Vào https://subjav.github.io/ để xem domain mới nhất hoặc dùng VPN / 1.1.1.1.
+        </p>
 
         <a href="https://1.1.1.1" target="_blank" class="download-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M.5 9.9v3.6c0 .6.4 1 1 1h13c.6 0 1-.4 1-1V9.9h-1.5v3.1h-12V9.9H.5z"/>
                 <path d="M7.646 11.354a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V1.5a.5.5 0 0 0-1 0v8.293L5.354 7.646a.5.5 0 1 0-.708.708l3 3z"/>
             </svg>
-            Tải 1.1.1.1
+            Tải ứng dụng 1.1.1.1
         </a>
     </div>
 
     <footer>
-        © 2026 SUBJAV
+        <p>
+            © 2026 SUBJAV. Tất cả các quyền được bảo lưu.
+            <br>
+            <a href="https://subjav.co/privacy" target="_blank">Chính sách bảo mật</a>
+        </p>
     </footer>
 </div>
 
 <script>
     const today = new Date();
-    document.getElementById("updateDate").innerText =
-        "Cập nhật: " + today.toLocaleDateString('vi-VN');
+    const formattedDate = today.toLocaleDateString('vi-VN');
+    document.getElementById("updateDate").innerText = "Cập nhật lần cuối: " + formattedDate;
 
     var countdownDate = new Date().getTime() + 10000;
-    var el = document.getElementById("countdown");
+    var countdownElement = document.getElementById("countdown");
 
-    setInterval(function() {
+    var countdownInterval = setInterval(function() {
         var now = new Date().getTime();
-        var seconds = Math.floor((countdownDate - now) / 1000);
-        el.innerHTML = "Chuyển hướng sau: " + seconds + " giây";
+        var distance = countdownDate - now;
 
-        if (seconds <= 0) {
+        var seconds = Math.floor(distance / 1000);
+        countdownElement.innerHTML = "Chuyển hướng sau: " + seconds + " giây";
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
             window.location.href = "https://subjav.co";
         }
     }, 1000);
