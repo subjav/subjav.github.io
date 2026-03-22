@@ -9,45 +9,41 @@
         /* Toàn bộ bố cục */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: linear-gradient(135deg, #6e7dff, #00c6ff);
+            color: white;
+            overflow: hidden;
         }
 
         /* Container chính */
         .container {
             text-align: center;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             max-width: 600px;
             width: 100%;
         }
 
         /* Tiêu đề */
         h1 {
-            font-size: 32px;
-            color: #333;
+            font-size: 36px;
             margin-bottom: 20px;
+            color: #333;
         }
 
         /* Đoạn văn thông báo */
         p {
             font-size: 18px;
+            margin-bottom: 30px;
             color: #555;
             line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* Chữ thông báo quan trọng */
-        .highlight {
-            font-weight: bold;
-            color: #4CAF50;
         }
 
         /* Nút hành động */
@@ -67,6 +63,14 @@
             background-color: #45a049;
         }
 
+        /* Countdown timer */
+        .countdown {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff4d4d;
+            margin-top: 20px;
+        }
+
         /* Footer */
         footer {
             margin-top: 40px;
@@ -84,13 +88,39 @@
 
     <div class="container">
         <h1>Thông báo thay đổi tên miền</h1>
-        <p>Chúng tôi xin thông báo rằng tên miền của chúng tôi đã thay đổi từ <span class="highlight">SUBJAV</span> thành <span class="highlight">SUBJAV.CO</span>.</p>
+        <p>Chúng tôi xin thông báo rằng tên miền của chúng tôi đã thay đổi từ <strong>SUBJAV</strong> thành <strong>SUBJAV.CO</strong>.</p>
         <p>Điều này giúp chúng tôi cải thiện hiệu suất và mang đến một trải nghiệm tốt hơn cho người dùng. Hãy truy cập website mới của chúng tôi tại địa chỉ: <strong><a href="https://subjav.co" target="_blank" class="highlight">https://subjav.co</a></strong>.</p>
         <a href="https://subjav.co" class="cta-button">Truy cập ngay</a>
+        <div class="countdown" id="countdown"></div>
         <footer>
             <p>© 2026 SUBJAV. Tất cả các quyền được bảo lưu. <br> <a href="https://subjav.co/privacy" target="_blank">Chính sách bảo mật</a></p>
         </footer>
     </div>
+
+    <script>
+        // Set thời gian đếm ngược (ví dụ: 10 giây)
+        var countdownDate = new Date().getTime() + 10000; // Thời gian đếm ngược là 10 giây từ bây giờ
+
+        var countdownElement = document.getElementById("countdown");
+
+        // Cập nhật countdown mỗi giây
+        var countdownInterval = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+
+            // Tính toán số giây còn lại
+            var seconds = Math.floor(distance / 1000);
+
+            // Hiển thị số giây còn lại trên trang
+            countdownElement.innerHTML = "Chuyển hướng sau: " + seconds + " giây";
+
+            // Nếu đếm ngược kết thúc, chuyển hướng sang domain mới
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                window.location.href = "https://subjav.co"; // Chuyển hướng đến domain mới
+            }
+        }, 1000); // Cập nhật mỗi giây
+    </script>
 
 </body>
 </html>
